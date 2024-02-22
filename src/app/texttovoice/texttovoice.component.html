@@ -11,7 +11,7 @@
     <label for="voices">Select voice</label>
     <select name="" id="voices" [(ngModel)]="selectedVoice">
       <option *ngFor="let voice of voices " [value]="voice.name">{{voice.name}}</option>
-    </select>
+    </select><br>
     <button (click)="speak()">Speak</button>
     
   </div>

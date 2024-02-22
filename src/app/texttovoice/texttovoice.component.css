@@ -1,0 +1,57 @@
+button {
+    margin-top: 10px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #3498db; /* Choose your button color */
+    color: #fff; /* Choose your text color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Add a hover effect */
+  button:hover {
+    background-color: #2980b9; /* Choose your hover color */
+    color: #fff; /* Choose your hover text color */
+  }
+  /* Style for the select element */
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px; /* Set the width as per your design */
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Style for the select element when focused */
+  select:focus {
+    border-color: #3498db; /* Change the border color when focused */
+  }
+  
+  /* Style for the options within the select element */
+  option {
+    font-size: 14px;
+  }
+  
+  /* Style for the select dropdown arrow */
+  select::-ms-expand {
+    display: none;
+  }
+  
+  select::after {
+    content: '\25BC'; /* Unicode character for a downward arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Hover effect for options */
+  option:hover {
+    background-color: #f5f5f5;
+  }
+  

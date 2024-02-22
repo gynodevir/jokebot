@@ -7,12 +7,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./jokeapi.component.css']
 })
 export class JokeapiComponent implements OnInit {
-  // @Output() ques = new EventEmitter<string>();
-  // @Output() ans = new EventEmitter<string>();
-  // @Output() clicked = new EventEmitter<boolean>();
-  @Input() ques:string=''
-  @Input() ans:string=''
-  @Input() clicked=false
+  @Output() ques = new EventEmitter<string>();
+  @Output() ans = new EventEmitter<string>();
+  @Output() clicked = new EventEmitter<boolean>();
+  ques1:string=''
+  ans1:string=''
+  clicked1:boolean=false
+
 
   constructor(private httpClient: HttpClient) {}
 
@@ -22,17 +23,25 @@ export class JokeapiComponent implements OnInit {
 
   getRandomJoke() {
     const apiUrl = 'https://official-joke-api.appspot.com/jokes/programming/random';
-    // this.clicked.emit(true);
-    this.clicked=true
+    this.clicked.emit(true);
 
     this.httpClient.get(apiUrl)
       .subscribe((response: any) => {
         if (response && response.length > 0) {
-          // this.ques.emit(response[0].setup);
-          // this.ans.emit(response[0].punchline);
-          this.ques=response[0].setup
-          this.ans=response[0].punchline
-          console.log(response);
+          const setup = response[0].setup;
+          const punchline = response[0].punchline;
+
+          // Emit events if needed
+          this.ques.emit(setup);
+          this.ans.emit(punchline);
+          this.ques1=setup
+          this.ans1=punchline
+          this.clicked1=true
+          
+
+          // Log values to the console
+          console.log('Setup:', setup);
+          console.log('Punchline:', punchline);
         }
       });
   }

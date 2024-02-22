@@ -1,61 +1,50 @@
-import { Component,OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-texttovoice',
   templateUrl: './texttovoice.component.html',
   styleUrls: ['./texttovoice.component.css']
 })
-export class TexttovoiceComponent implements OnInit{
-  // textToSpeak: string = '';
-  // voices: SpeechSynthesisVoice[] = [];
-  // selectedVoice: string = '';
-
-  // constructor() {
-  //   this.voices = window.speechSynthesis.getVoices();
-  //   window.speechSynthesis.onvoiceschanged = () => {
-  //     this.voices = window.speechSynthesis.getVoices();
-  //   };
-  // }
-
-  // speak() {
-  //   const speechSynthesis = window.speechSynthesis;
-  //   const utterance = new SpeechSynthesisUtterance(this.textToSpeak);
-
-  //   const selectedVoice = this.voices.find(voice => voice.name === this.selectedVoice);
-
-  //   if (selectedVoice) {
-  //     utterance.voice = selectedVoice;
-  //     speechSynthesis.speak(utterance); // Move this line inside the if block
-  //   }
-  // }
+export class TexttovoiceComponent implements OnInit {
   @Input() ques: string = '';
-  @Input() ans:string=''
-  @Input() clicked:boolean=false
-  
+  @Input() ans: string = '';
+  @Input() clicked: boolean = false;
 
-  texttoSpeak:string=''
-  voices:SpeechSynthesisVoice[]=[]
-  selectedVoice:string=''
+  texttoSpeak: string = '';
+  voices: SpeechSynthesisVoice[] = [];
+  selectedVoice: string = '';
 
   ngOnInit(): void {
-    this.voices=window.speechSynthesis.getVoices()
-    window.speechSynthesis.onvoiceschanged=()=>{
-      this.voices=window.speechSynthesis.getVoices()
-    }
+    this.voices = window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => {
+      this.voices = window.speechSynthesis.getVoices();
+    };
   }
+
   speak() {
-    this.texttoSpeak=this.ques+this.ans
-    console.log(this.texttoSpeak)
+    this.clicked = false;
+    this.texttoSpeak = this.ques + this.ans;
+    console.log(this.texttoSpeak);
 
     const speechSynthesis = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(this.texttoSpeak);
+    
+    // Check if speech synthesis is currently speaking
+    if (speechSynthesis.speaking) {
+      // Stop the current speech
+      speechSynthesis.cancel();
+    }
 
+    const utterance = new SpeechSynthesisUtterance(this.texttoSpeak);
     const selectedVoice = this.voices.find(voice => voice.name === this.selectedVoice);
 
     if (selectedVoice) {
       utterance.voice = selectedVoice;
       speechSynthesis.speak(utterance);
+
+      // Listen for the 'end' event to stop continuous generation
+      utterance.onend = () => {
+        speechSynthesis.cancel();
+      };
     }
   }
-
 }

@@ -1,4 +1,3 @@
-
-<app-jokeapi [ques]="ques" [ans]="ans" [clicked]="clicked"></app-jokeapi>
-<app-texttovoice [ques]="ques" [ans]="ans" [clicked]="clicked"></app-texttovoice>
-parent question{{ques}}
+<h1>Jokes Generator</h1>
+<app-jokeapi (ques)="handleQuestion($event)" (ans)="handleAnswer($event)" (clicked)="handleClick($event)"></app-jokeapi>
+<app-texttovoice [ques]="parentQuestion" [ans]="parentAnswer" [clicked]="parentClicked"></app-texttovoice>

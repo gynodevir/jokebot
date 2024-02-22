@@ -1,0 +1,20 @@
+.jokesgen{
+    margin-top: 10%;
+}
+/* Apply basic styles to the button */
+button {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #3498db; /* Choose your button color */
+    color: #fff; /* Choose your text color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Add a hover effect */
+  button:hover {
+    background-color: #2980b9; /* Choose your hover color */
+    color: #fff; /* Choose your hover text color */
+  }
+  

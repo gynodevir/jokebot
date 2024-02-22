@@ -7,11 +7,13 @@ import { TexttovoiceComponent } from './texttovoice/texttovoice.component';
 import { JokeapiComponent } from './jokeapi/jokeapi.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     TexttovoiceComponent,
     JokeapiComponent,
+   
  
   ],
   imports: [

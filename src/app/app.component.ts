@@ -10,8 +10,20 @@ export class AppComponent {
   // @Input() ques: string | undefined;
   // @Input() ans: string | undefined;
   // @Input() clicked: boolean | undefined;
-  @Input() ques:string=''
-  @Input() ans:string=''
-  @Input() clicked : boolean=false
+  parentQuestion: string = '';
+  parentAnswer: string = '';
+  parentClicked: boolean = false;
+
+  handleQuestion(event: string) {
+    this.parentQuestion = event;
+  }
+
+  handleAnswer(event: string) {
+    this.parentAnswer = event;
+  }
+
+  handleClick(event: boolean) {
+    this.parentClicked = event;
+  }
   
 }

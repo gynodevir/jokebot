@@ -1,0 +1,17 @@
+<!-- <div>
+    <textarea [(ngModel)]="textToSpeak" placeholder="Enter text to speak"></textarea>
+    <label for="voices">Select Voice:</label>
+    <select id="voices" [(ngModel)]="selectedVoice">
+      <option *ngFor="let voice of voices" [value]="voice.name">{{ voice.name }}</option>
+    </select>
+    <button (click)="speak()">Speak</button>
+  </div> -->
+  <div>
+  
+    <label for="voices">Select voice</label>
+    <select name="" id="voices" [(ngModel)]="selectedVoice">
+      <option *ngFor="let voice of voices " [value]="voice.name">{{voice.name}}</option>
+    </select>
+    <button (click)="speak()">Speak</button>
+    
+  </div>

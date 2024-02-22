@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,EventEmitter,Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'jokeapp';
+  // @Input() ques: string | undefined;
+  // @Input() ans: string | undefined;
+  // @Input() clicked: boolean | undefined;
+  @Input() ques:string=''
+  @Input() ans:string=''
+  @Input() clicked : boolean=false
+  
 }
